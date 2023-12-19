@@ -1,0 +1,336 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+% ustthesis_test.tex: A template file for usage with ustthesis.cls      %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper]{ustthesis}
+\usepackage[square,numbers]{natbib}
+\usepackage{xeCJK}
+\usepackage[T1]{fontenc}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{longtable}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{cases}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{times}
+\usepackage{array}
+%\usepackage{hyperref}
+\usepackage{pdflscape}
+\DeclareMathOperator*{\argmax}{argmax}      % for argmax
+\setCJKmainfont{AR PL UMing HK}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%add additional packages%%%%%%%%%%%
+
+% \usepackage{setspace}
+% \usepackage{hyperref}
+\usepackage{diagbox}
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+% \usepackage{hyperref}       % hyperlinks
+% \usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypographyhttps://www.overleaf.com/project/62064cfa2a4921563b535a86
+\usepackage{xcolor}         % colors
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{wrapfig}
+\usepackage{threeparttable}    %这行要添加
+%\usepackage{appendix}
+%\usepackage[utf8x]{inputenc}
+\newcommand{\sign}{\text{sign}}
+\newtheorem{myDef}{Definition} 
+\newtheorem{myAss}{Assumption} 
+%Assumption
+\newtheorem{myTheo}{Theorem}
+\newtheorem{myexam}{Example}
+\newtheorem{proposition}{Proposition}
+\newtheorem{proof}{Proof}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{subfigure}
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+
+\newcommand{\etal}{\emph{et~al.}\xspace}
+\newcommand{\eg}{\emph{e.g.},\xspace}
+\newcommand{\ie}{\emph{i.e.},\xspace}
+\newcommand{\wrt}{\emph{w.r.t.}\xspace}
+\newcommand{\aka}{\emph{a.k.a.}\xspace}
+\newcommand{\etc}{\emph{etc.}\xspace}
+\newcommand{\cf}{cf.\/~}
+\newcommand\figref[1]{Figure~\ref{#1}}
+\newcommand\algoref[1]{Algorithm~\ref{#1}}
+\newcommand\tabref[1]{Table~\ref{#1}}
+\newcommand\secref[1]{Section~\ref{#1}}
+\newcommand\equref[1]{Eq.~(\ref{#1})}
+\DeclareMathAlphabet\mathbfcal{OMS}{cmsy}{b}{n}
+
+\newtheorem{pro}{Problem}
+\newcommand{\eat}[1]{}
+\ifodd 1
+\newcommand{\rev}[1]{{\color{purple}{#1}}} %revise of the text
+\newcommand{\response}[1]{{\color{black}{#1}}}
+\newcommand{\TODO}[1]{{\color{red}TODO:{#1}}}
+\newcommand\beftext[1]{{\color[rgb]{0.5,0.5,0.5}{BEFORE:#1}}}
+\else
+\newcommand{\rev}[1]{#1}
+\newcommand{\hao}[1]{#1}
+\newcommand{\TODO}[1]{}
+\newcommand{\beftext}[1]{#1}
+\fi
+
+
+
+
+
+
+
+
+
+
+
+
+% \usepackage{latexsym}
+    % Use the "latexsym" package when encountering the following error:
+    %   ! LaTeX Error: Command \??? not provided in base LaTeX2e.
+% \usepackage{epsf}
+    % Use the "epsf" package for including EPS files.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+% Preambles. DO NOT ERASE THEM. Change to suite your particular purpose.%
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Tittle }  % Title of the thesis.
+\author{Your Name}     % Author of the thesis.
+\degree{\MPhil}             % Degree for which the thesis is. Options: \AM \MSc \MPhil \PhD
+\stage{\Thesis}              % Stage of PhD document; use \Thesis for all other degree. Options: \PQE \Proposal \Thesis
+\subject{Your Thrust} % Subject of the Degree.
+\department{Your Thrust}       % Department to which the thesis is submitted.
+\advisor{Prof. A}     % Supervisor. Additional 
+\member{Prof. B, Thesis Supervisor}
+%co-supervisor can be added using \member
+%\acting      % Uncomment for Accting department head
+
+\depthead{Prof C}     % department head.
+\defencedate{2023}{12}{18}     % \defencedate{year}{month}{day}.
+
+% NOTE:
+%   According to the sample shown in the guidelines, page number is
+%   placed below the bottom margin.  However, if the author prefers
+%   the page number to be printed above the bottom margin, please
+%   activate the following command.
+
+%\PNumberAboveBottomMargin
+
+\begin{document}
+%\begin{CJK}{UTF8}{song}  % Bitstream Cyber Bit song ti
+
+%\begin{CJK*}{UTF8}{gbsn} % Arphic song ti
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+% Now the actual Thesis. The order of output MUST be followed:          %
+%                                                                       %
+%    1) TITLEPAGE                                                       %
+%                                                                       %
+% The \maketitle command generates the Title page as well as the        %
+% Signature page.                                                       %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%     2) DEDICATION (Optional)                                          %
+%                                                                       %
+% The \dedication and \enddedication commands are optional. If          %
+% specified it generates a page for dedication.                         %
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \dedication
+% % This is an optional section.
+% \input{00I_dedication.tex}
+% \enddedication
+% \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%     3) ACKNOWLEDGMENTS                                                %
+%                                                                       %
+% \acknowledgments and \endacknowledgments defines the                  %
+% Acknowledgments of the author of the Thesis.                          %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\acknowledgments
+\input{00II_acknowledgments.tex}
+\endacknowledgments
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%     4) TABLE OF CONTENTS                                              %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%     5) LIST OF FIGURES (If Any)                                       %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\listoffigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%     6) LIST OF TABLES (If Any)
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%     7) ABSTRACT                                                       %
+%                                                                       %
+% \abstract and \endabstract are used to define a short Abstract for    %
+% the Thesis.                                                           %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\abstract
+\input{00III_abstract.tex}
+\endabstract
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%     8) The Actual Contents                                            %
+%                                                                       %
+% The command \chapters MUST BE USED to ensure that the entire content  %
+% of the Thesis is double-spaced (in version 1.0).                      %
+%                                                                       %
+% However, in version 2.0, \chapters will be automatically added in     %
+% the beginning of the first chapter.                                   %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\chapters         % Not necessary with ustthesis.cls (v2.0).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+% Each chapter is defined via the \chapter command. The usual sectional %
+% commands of LaTeX are also available.                                 %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introduction}
+\label{chp_intro}
+\input{01_introduction.tex}
+\newpage
+
+% \chapter{Scientific Background and Literature Review}
+% \label{chp_review}
+% \input{02_guidelines.tex}
+% \newpage
+
+
+
+\chapter{Scientific Background and Literature Review}
+\label{chp_review}
+\input{02_secienfic_report_literature_review.tex}
+\newpage
+
+\chapter{Methods}
+\label{chp_attack}
+\input{03_methods}
+\newpage
+
+
+\chapter{Conclusion}
+\label{chp_conclusion}
+\input{05_conclusion}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%      9) BIBLIOGRAPHY                                                  %
+%                                                                       %
+% This example uses bibtex to generate the required Bibliography. Refer %
+% to the % the file ustthesis_test.bib for the entries of the           %
+% Bibliography. Note that only the cited entries are printed.           %
+%                                                                       %
+% If BibTeX is not used to typeset the bibliography, replace the        %
+% following line with the \begin{thebibliography} and \end{bibliography}%
+% commands (the "thebibliography" environment) to process the           %
+% Bibliography.                                                         %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+% The recommended bibliography style is the IEEE bibliography style.    %
+% "ustbib" defines the IEEE bibliography standard with the added        %
+% ability of sorting the items by name of author.                       %
+%                                                                       %
+% If you are not using BibTeX to process your Bibliography, comment out %
+% the following line.                                                   %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%     10) APPENDIX (If Any)                                              %
+%                                                                       %
+% \appendix command marks the beginning of the APPENDIX part of the     %
+% Thesis. The usual \chapter command is used for the different chapters %
+% of the Appendix.                                                      %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \appendix
+% \chapter{Tips on HKUST thesis preparation}
+% \label{chp_tips}
+% \input{A_tips.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%     11) BIOGRAPHY (optional)                                          %
+%                                                                       %
+% \biography and \endbiography are used to define the optional          %
+% Biography of the author of the Thesis.                                %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
