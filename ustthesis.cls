@@ -642,7 +642,7 @@ research.}
 	\par\vspace{1cm}
 	\indent
 %	{I further authorise The Hong Kong University of Science and Technology
-	{I further authorize the Hong Kong University of Science and Technology (Guagnzhou)
+	{I further authorize the Hong Kong University of Science and Technology (Guangzhou)
 to reproduce the thesis by photocopying or by other means, in total or in part,
 at the request of other institutions or individuals for the purpose of
 scholarly research.}
