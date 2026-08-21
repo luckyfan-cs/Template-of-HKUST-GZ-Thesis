@@ -172,7 +172,7 @@
 % \ds@BAR is not defined, the file BAR.sty will be read after the present
 % (main) .STY file is executed.
 
-\@options
+% Modern LaTeX class options are handled by \ProcessOptions above.
 
 %  ****************************************
 %  *               FONTS                  *
@@ -250,8 +250,8 @@
 %\evensidemargin 1.45cm  %  Note that \oddsidemargin = \evensidemargin
 %\oddsidemargin 15mm   %  25mm + 15mm = 40mm
 %\evensidemargin 15mm  %  25mm + 15mm = 40mm
-\oddsidemargin 0mm   %  25mm + 15mm = 40mm
-\evensidemargin 7mm  %  25mm + 15mm = 40mm
+\oddsidemargin -0.4mm  % 25mm left margin on A4 paper
+\evensidemargin -0.4mm % 25mm left margin on A4 paper
 \marginparwidth 0pt   %  Width of marginal notes.
 \marginparsep 0pt     % Horizontal space between outer margin and marginal note
 
@@ -287,7 +287,7 @@
 \textheight 247mm        % 297mm - 25mm * 2 = 247mm
                          % According to the sample shown in the guidelines,
                          % page number is placed below the bottom margin.
-\textwidth 15.3cm        % 210mm Width of text line. 400 vice 430
+\textwidth 160mm         % 210mm - 25mm * 2 = 160mm
                          % For two-column mode:
 \columnsep 10pt          %    Space between columns
 \columnseprule 0pt       %    Width of rule between columns.
@@ -2120,4 +2120,3 @@ scholarly research.}
 \def\alg#1{\nameAlgorithm~\ref{#1}}
 \def\exam#1{\nameExample~\ref{#1}} % added by WU,Zhaojun
 %end
-

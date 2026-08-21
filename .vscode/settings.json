@@ -1,55 +1,28 @@
 {
     "latex-workshop.message.error.show": false,
     "latex-workshop.message.warning.show": false,
-    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.latex.recipe.default": "latexmk (XeLaTeX)",
     "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.latex.tools": [
         {
-            "name": "xelatex",
-            "command": "xelatex",
+            "name": "latexmk (XeLaTeX)",
+            "command": "latexmk",
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "%DOCFILE%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "latexmk",
-            "command": "latexmk",
-            "args": [
-                "-xelatex"
-            ]
-        },
-        {
-            "name": "biber",
-            "command": "biber",
-            "args": [
-                "%DOCFILE%"
-            ]
-        },
-        {
-            "name": "build_dtx",
-            "command": "latexmk",
-            "args": [
                 "-xelatex",
-                "hkustthesis.dtx"
-            ]
-        },
-        {
-            "name": "extract_dtx",
-            "command": "xetex",
-            "args": [
-                "hkustthesis.dtx"
+                "%DOC%"
             ]
         }
     ],
     "latex-workshop.latex.recipes": [
         {
-            "name": "xelatex",
-            "tools": ["xelatex"]
-        },
+            "name": "latexmk (XeLaTeX)",
+            "tools": [
+                "latexmk (XeLaTeX)"
+            ]
+        }
     ],
     "latex-workshop.latex.clean.fileTypes": [
         "*.acn",
@@ -69,7 +42,6 @@
         "*.idx",
         "*.ilg",
         "*.ind",
-        "*.ins",
         "*.ist",
         "*.lof",
         "*.log",
@@ -78,6 +50,7 @@
         "*.out",
         "*.run.xml",
         "*.snm",
-        "*.toc"
-    ],
+        "*.toc",
+        "*.xdv"
+    ]
 }
