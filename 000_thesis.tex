@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                       %
-% ustthesis_test.tex: A template file for usage with ustthesis.cls      %
+% 000_thesis.tex: A template file for usage with ustthesis.cls         %
 %                                                                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -13,7 +13,6 @@
 \usepackage{longtable}
 \usepackage{url}
 \usepackage{multirow}
-\usepackage{graphics}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{cases}
@@ -24,7 +23,15 @@
 %\usepackage{hyperref}
 \usepackage{pdflscape}
 \DeclareMathOperator*{\argmax}{argmax}      % for argmax
-\setCJKmainfont{AR PL UMing HK}
+\IfFontExistsTF{AR PL UMing HK}{
+  \setCJKmainfont{AR PL UMing HK}
+}{
+  \IfFontExistsTF{FandolSong-Regular}{
+    \setCJKmainfont{FandolSong-Regular}
+  }{
+    \setCJKmainfont[Script=Default]{Songti SC}
+  }
+}
 
 
 
@@ -36,27 +43,19 @@
 % \usepackage{setspace}
 % \usepackage{hyperref}
 \usepackage{diagbox}
-\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
 % \usepackage{hyperref}       % hyperlinks
 % \usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{amsfonts}       % blackboard math symbols
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
-\usepackage{microtype}      % microtypographyhttps://www.overleaf.com/project/62064cfa2a4921563b535a86
-\usepackage{xcolor}         % colors
-\usepackage{times}
+\usepackage{xspace}         % smart spacing after custom text macros
 \usepackage{epsfig}
-\usepackage{graphicx}
-\usepackage{amsmath}
 \usepackage{amssymb}
 
-\usepackage{amsmath}
-\usepackage{amsfonts}
 \usepackage{dsfont}
-\usepackage{multirow}
 \usepackage{adjustbox}
 \usepackage{wrapfig}
-\usepackage{threeparttable}    %这行要添加
+\usepackage{threeparttable}
 %\usepackage{appendix}
 %\usepackage[utf8x]{inputenc}
 \newcommand{\sign}{\text{sign}}
@@ -68,7 +67,6 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{proof}{Proof}
 \usepackage[ruled,linesnumbered]{algorithm2e}
-\usepackage{subfigure}
 \makeatletter
 \newcommand{\rmnum}[1]{\romannumeral #1}
 \newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
@@ -124,7 +122,7 @@
 %                                                                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Tittle }  % Title of the thesis.
+\title{Your Thesis Title}  % Title of the thesis.
 \author{Your Name}     % Author of the thesis.
 \degree{\MPhil}             % Degree for which the thesis is. Options: \AM \MSc \MPhil \PhD
 \stage{\Thesis}              % Stage of PhD document; use \Thesis for all other degree. Options: \PQE \Proposal \Thesis
@@ -265,7 +263,7 @@
 
 \chapter{Scientific Background and Literature Review}
 \label{chp_review}
-\input{02_secienfic_report_literature_review.tex}
+\input{02_scientific_background_literature_review.tex}
 \newpage
 
 \chapter{Methods}
