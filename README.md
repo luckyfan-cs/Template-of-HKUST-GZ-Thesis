@@ -17,7 +17,7 @@ An unofficial LaTeX thesis template for research postgraduates at HKUST(GZ).
 > 本项目由社区维护，并非 HKUST(GZ) 官方发布或认证的模板。学校要求可能随时间更新；提交论文前，请务必以 [HKUST(GZ) 最新的 Guidelines on Thesis Preparation](https://fytgs.hkust-gz.edu.cn/rpg-handbook/guidelines-on-thesis-preparation) 以及所在 Hub、Thrust/Division 和导师的要求为准。
 
 > [!WARNING]
-> 当前 `ustthesis.cls` 源自较早版本的 HKUST 模板，尚未完成对最新版 HKUST(GZ) 规定的逐项验证。以 2025 年 4 月版官方指南为例，其要求的前置页顺序为“标题页、摘要、授权页、签字页、致谢、目录、图表目录”，而本仓库当前示例的顺序并不完全一致。正式提交前请逐页核对并按学校要求调整。
+> 当前示例已通过 `separatefrontmatter` 模式修复前置页顺序，并经过实际编译及分页回归验证。类文件仍源自较早版本的 HKUST 模板，**这不代表已通过学校全部格式要求验证**。验证范围、官方示例的矛盾与待确认项见 [验证记录](docs/frontmatter-validation.md)。
 
 ## 模板特点
 
@@ -102,6 +102,35 @@ bibtex 000_thesis
 xelatex 000_thesis.tex
 xelatex 000_thesis.tex
 ```
+
+## 前置页顺序与旧文档兼容
+
+新示例使用以下调用顺序（博士论文请设置 `\degree{\PhD}`）：
+
+```tex
+\documentclass[a4paper,separatefrontmatter]{ustthesis}
+% ... 宏包及论文元数据 ...
+\begin{document}
+\maketitle                 % 仅标题页
+\abstract
+\input{00III_abstract.tex}
+\endabstract
+\makeapprovalpages         % 授权页及签字页；不重置页码
+\acknowledgments
+\input{00II_acknowledgments.tex}
+\endacknowledgments
+\tableofcontents
+\listoffigures
+\listoftables
+% ... 正文、参考文献及附录 ...
+\end{document}
+```
+
+- **已有论文不会自动迁移**：不加 `separatefrontmatter` 时，`\maketitle` 仍一次生成标题页、授权页和签字页，旧布局保持不变。
+- 迁移时必须同时加上选项、把摘要移至标题页之后，并添加 `\makeapprovalpages`。不要再单独调用底层 `\authorise`，也不要混用 `\makeabstract`。
+- 新模式采用连续小写罗马页码；标题页的 i 改为统一页脚，目录页显示页码并自行分页；第一章仍由类文件自动切换为阿拉伯页码 1。
+- `\makeapprovalpages` 仅在 Thesis 阶段生成页面，重复调用不会重复输出。PQE/Proposal 沿用不生成授权及签字页的行为。
+- 示例仍含占位姓名、学位、日期、摘要和空参考文献；开始 Draft V1 前必须填写。当前 `\defencedate` 同时控制封面月份和签字日期，需要按实际提交要求核对。
 
 ## VS Code 使用方式
 
