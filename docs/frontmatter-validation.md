@@ -58,3 +58,11 @@ For the optional exact legacy comparison, compile the old source/class in an iso
 - **Other paths:** PQE/Proposal, optional dedication, hyperref/bookmarks, all degree types and multi-page contents were not exhaustively tested. Legacy compatibility was demonstrated on the repository example, not every possible downstream document.
 
 This is a tested front-matter repair suitable as a Draft V1 starting point, not a certification of complete HKUST(GZ) thesis-format compliance.
+
+## Follow-up: table and figure examples (2026-10-14)
+
+Added a booktabs table and a two-by-two vector plot with panel legends to `03_methods.tex`, following the layout patterns on the official PhD sample's final two pages. All values and curves are explicitly synthetic. The sample now includes a real citation to that official PDF; its outdated bibliography URL was updated to the current guideline-linked December 2024 sample.
+
+The complete example now compiles to **14 pages**, with unchanged front matter i–viii, the table on body page 3, the four-panel figure on page 4, conclusion on page 5 and bibliography on page 6. Figure 3.1 and Table 3.1 resolve in text and appear in their corresponding lists. Rendered example/list/reference pages were inspected; the final log has no undefined references, missing citations or overfull boxes. It retains fontspec/xeCJK font-family fallback warnings and one underfull bibliography URL line; these are documented rather than treated as full typography compliance. The PDF checker and the unchanged PhD regression fixture pass.
+
+The preceding 13-page and pixel-identical body results describe the front-matter-only patch before these intentionally added examples. The optional legacy check continues to compare the original source with the repaired class; the expanded example is no longer expected to match the old body. Requires the standard `pgfplots`/TikZ packages. No additional changes to the class were made.
