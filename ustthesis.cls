@@ -87,6 +87,8 @@
 \typeout{Please report any problems to chikiu.lo@gmail.com}
 
 \PassOptionsToClass{12pt,twoside}{report}
+\newif\ifseparatefrontmatter
+\DeclareOption{separatefrontmatter}{\separatefrontmattertrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions
 \LoadClass{report}[1995/12/20 v1.3q Standard LaTeX document class]
@@ -596,7 +598,7 @@
 \typeout{Copyright}
 \begin{center}
 {Copyright \copyright\ by \@author \year}
-\thepage{}
+\ifseparatefrontmatter\else\thepage{}\fi
 \end{center}
 }
 
@@ -1177,8 +1179,9 @@ scholarly research.}
 % Chan:
 %	Set \tocdefined to be true.
   \tocdefinedtrue
+  \ifseparatefrontmatter\clearpage\fi
   \normalbaselines
-\thispagestyle{empty}
+  \ifseparatefrontmatter\thispagestyle{plain}\else\thispagestyle{empty}\fi
   % tuck 3/17/90: deleted \thispagestyle; redundant, \chapter* does page style.
   %\chapter*{Table of Contents}
   \addcontentsline{toc}{chapter}{Table of Contents} 
@@ -1719,6 +1722,7 @@ scholarly research.}
   \titledefinedtrue
   \typeout{Title page}
   \begin{titlepage}
+    \ifseparatefrontmatter\thispagestyle{plain}\fi
     \textspace
 %    \let\footnotesize\small % Local definitions to make \thanks produce
 %    \let\footnoterule\relax % \normalsize footnotes with no separating rule.
@@ -1782,8 +1786,22 @@ scholarly research.}
     \addcontentsline{toc}{chapter}{Title Page}
     \newpage
 
-% End of Page 1
-\ifThesis
+% Legacy documents still generate all three pages here.
+\ifseparatefrontmatter\else
+  \ifThesis\ust@approvalpages\fi
+\fi
+  \end{titlepage}
+
+%
+% End of TitlePage
+%
+
+  \setcounter{footnote}{0} % Footnotes start at zero again.
+  \let\maketitle\relax % only ONCE!?
+}
+% Shared original authorization/signature layout. The caller supplies the
+% initial text spacing; authorise and the signature page balance it locally.
+\def\ust@approvalpages{
     \authorise
 
 % End of Page 2
@@ -1870,16 +1888,26 @@ scholarly research.}
     \addcontentsline{toc}{chapter}{Signature Page}
     \textspaceundo
     \newpage
-\fi
-  \end{titlepage}
-
-%
-% End of TitlePage
-%
-
-  \setcounter{footnote}{0} % Footnotes start at zero again.
-  \let\maketitle\relax % only ONCE!?
 }
+
+% Explicitly insert the approval pages after the abstract in the new mode.
+% Grouping keeps spacing changes out of the following front matter.
+\newcommand{\makeapprovalpages}{%
+  \ifseparatefrontmatter
+    \ifThesis
+      \clearpage
+      \begingroup
+        \textspace
+        \ust@approvalpages
+      \endgroup
+    \fi
+    \global\let\makeapprovalpages\relax
+  \else
+    \ClassWarning{ustthesis}{Approval pages already included by maketitle;
+      use the separatefrontmatter option to insert them explicitly}%
+  \fi
+}
+
 %% Makeabstract command
 \def\makeabstract{		% Define macro to print title page.
   \typeout{Abstract}

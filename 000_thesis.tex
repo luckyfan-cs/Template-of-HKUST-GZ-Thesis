@@ -4,7 +4,7 @@
 %                                                                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[a4paper]{ustthesis}
+\documentclass[a4paper,separatefrontmatter]{ustthesis}
 \usepackage[square,numbers]{natbib}
 \usepackage{xeCJK}
 \usepackage[T1]{fontenc}
@@ -14,6 +14,8 @@
 \usepackage{url}
 \usepackage{multirow}
 \usepackage{graphicx}
+\usepackage{pgfplots} % Editable vector plots in the example chapter.
+\pgfplotsset{compat=1.18}
 \usepackage{amsmath}
 \usepackage{cases}
 \usepackage{colortbl}
@@ -149,84 +151,28 @@
 
 %\begin{CJK*}{UTF8}{gbsn} % Arphic song ti
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                       %
-% Now the actual Thesis. The order of output MUST be followed:          %
-%                                                                       %
-%    1) TITLEPAGE                                                       %
-%                                                                       %
-% The \maketitle command generates the Title page as well as the        %
-% Signature page.                                                       %
-%                                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Front matter: HKUST(GZ) Guidelines on Thesis Preparation (April 2025).
+% separatefrontmatter makes maketitle generate only the title page.
 \maketitle
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                       %
-%     2) DEDICATION (Optional)                                          %
-%                                                                       %
-% The \dedication and \enddedication commands are optional. If          %
-% specified it generates a page for dedication.                         %
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\abstract
+\input{00III_abstract.tex}
+\endabstract
 
-% \dedication
-% % This is an optional section.
-% \input{00I_dedication.tex}
-% \enddedication
-% \newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                       %
-%     3) ACKNOWLEDGMENTS                                                %
-%                                                                       %
-% \acknowledgments and \endacknowledgments defines the                  %
-% Acknowledgments of the author of the Thesis.                          %
-%                                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Authorization and signature pages retain the original class layout.
+\makeapprovalpages
 
 \acknowledgments
 \input{00II_acknowledgments.tex}
 \endacknowledgments
 \newpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                       %
-%     4) TABLE OF CONTENTS                                              %
-%                                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \tableofcontents
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                       %
-%     5) LIST OF FIGURES (If Any)                                       %
-%                                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \listoffigures
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                       %
-%     6) LIST OF TABLES (If Any)
-%                                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \listoftables
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                       %
-%     7) ABSTRACT                                                       %
-%                                                                       %
-% \abstract and \endabstract are used to define a short Abstract for    %
-% the Thesis.                                                           %
-%                                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\abstract
-\input{00III_abstract.tex}
-\endabstract
+% Dedication is optional and not specified in the required front-matter order.
+% Confirm its placement with your Thrust before enabling it.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                       %

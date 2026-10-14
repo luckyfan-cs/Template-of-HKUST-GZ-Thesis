@@ -1,0 +1,38 @@
+% Compile from the repository root with XeLaTeX -> BibTeX -> XeLaTeX twice.
+\documentclass[a4paper,separatefrontmatter]{ustthesis}
+\usepackage[square,numbers]{natbib}
+\title{Front Matter Regression Test}
+\author{Test Candidate}
+\degree{\PhD}\stage{\Thesis}
+\subject{Artificial Intelligence}\department{Artificial Intelligence}
+\advisor{Prof. A}\member{Prof. B, Thesis Supervisor}\depthead{Prof. C}
+\defencedate{2026}{10}{14}
+\begin{document}
+\maketitle
+\abstract
+Abstract first page marker.
+\newpage
+Abstract continuation marker. This forced break tests pagination only.
+\endabstract
+\makeapprovalpages
+\makeapprovalpages % Must not duplicate the approval pages.
+\acknowledgments Acknowledgment marker.\endacknowledgments
+% No manual break: the contents command must start its own page.
+\tableofcontents
+\listoffigures
+\listoftables
+\chapter{Introduction}\label{ch:intro}
+A citation \citep{guidelines}. See Figure~\ref{fig:test}, Table~\ref{tab:test},
+and Appendix~\ref{app:test}.
+\begin{figure}[ht]\centering\rule{20mm}{10mm}
+\caption{Regression figure}\label{fig:test}\end{figure}
+\begin{table}[ht]\centering\begin{tabular}{cc}A&B\\1&2\end{tabular}
+\caption{Regression table}\label{tab:test}\end{table}
+\clearpage
+Body continuation marker.
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{IEEEtran}\bibliography{references}
+\appendix\chapter{Checks}\label{app:test}
+Appendix marker. Chapter~\ref{ch:intro}.
+\end{document}
